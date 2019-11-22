@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: luckysideburn/kubeinvaders
+  repository: fm-cloud-repository.emea-bottomline.root.bottomline.com:5000/fm/kubeinvaders
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -13,22 +13,8 @@ nameOverride: ""
 fullnameOverride: ""
 
 service:
-  type: ClusterIP
-  port: 8080
-
-ingress:
-  enabled: true
-  annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-  hosts:
-    - host: kubeinvaders.local
-      paths: [ "/" ]
-
-  tls:
-    - secretName: chart-example-tls
-      hosts:
-        - chart-example.local
-
+  type: NodePort
+  port: 9090
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -46,8 +32,8 @@ nodeSelector: {}
 
 tolerations: []
 
-route_host: kubeinvaders.local
-target_namespace: "foobar"
+route_host: ch02vldi0001.emea-bottomline.root.bottomline.com:9090
+target_namespace: "prototype"
 hitslimit: 1
 alienproximity: 15
 updatetime: 1

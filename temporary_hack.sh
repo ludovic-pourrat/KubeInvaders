@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ENDPOINT=$(echo "https://${ROUTE_HOST}" | sed "s/\//\\\\\//g")
+ENDPOINT=$(echo "http://${ROUTE_HOST}" | sed "s/\//\\\\\//g")
 
 sed -i "s/___buildEnvironment.called=true/___buildEnvironment.called=true;ENV[\"TOKEN\"]=\"$TOKEN\";ENV[\"ENDPOINT\"]=\"$ENDPOINT\/kube\";ENV[\"NAMESPACE\"]=\"$NAMESPACE\";ENV[\"HITSLIMIT\"]=\"$HITSLIMIT\";ENV[\"ALIENPROXIMITY\"]=\"$ALIENPROXIMITY\";ENV[\"UPDATETIME\"]=\"$UPDATETIME\"/g" /var/www/html/KubeInvaders_wasm.js
 
